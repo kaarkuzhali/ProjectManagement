@@ -5,9 +5,9 @@ module Inventory
         puts "DatabaseService::initialize"
       end
 			
-			def start(dealer_service)
+			def start(manager_service)
 			  @database_connection = DatabaseConnection.new
-				@seller_service = dealer_service
+				@manager_service = manager_service
 			end
 			
 			def account_creation()
@@ -19,6 +19,10 @@ module Inventory
 			end
 			
 			def add_new_address()
+			  @database_connection.add_new_address
+			end
+			
+			def update_address()
 			  @database_connection.update_address
 			end
 			
@@ -36,7 +40,11 @@ module Inventory
 			
 			def on_item_booking()
 			  @database_connection.save_order_details
-				@seller_service.notify_seller
+				@manager_service.notify_seller
+			end
+			
+			def update_order_status
+			  @database_connection.update_order_status
 			end
     end
 end
