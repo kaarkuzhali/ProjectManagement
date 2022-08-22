@@ -1,0 +1,5 @@
+require_relative './constants/Database'
+require_relative './connection/DatabaseConnection'
+require_relative './services/DatabaseService'
+require_relative './services/ManagerService'
+require_relative './services/DealerService'
